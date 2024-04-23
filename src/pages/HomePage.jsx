@@ -5,7 +5,7 @@ import Hero from '../components/Hero'
 const HomePage = () => {
   return (
     <>
-        <div className="container-xxl">
+        <div className="">
             <Navbar />
             <Hero />
         </div>
