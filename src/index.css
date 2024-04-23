@@ -9,3 +9,7 @@
 .ht-100-real{
     height: 100vh;
 }
+
+.border-funny{
+    border-radius:  0 0 23px 0;
+}
