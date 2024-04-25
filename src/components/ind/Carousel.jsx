@@ -2,7 +2,7 @@ import React from 'react'
 
 const Carousel = ({ header, text, button }) => {
   return (
-    <div class="container col-xxl-8 ht-100 px-4">
+    <div class="container col-xxl-8 ht-100 px-4 py-5 my-5">
     <div class="row flex-lg-row-reverse align-items-center g-1 py-1">
       <div class="col-10 col-sm-8 col-lg-6">
         <img className='' src="https://placehold.co/600x400" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy" />

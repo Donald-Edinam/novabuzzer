@@ -3,13 +3,13 @@ import ShoppingCartIcon from '@heroicons/react/24/solid/ShoppingCartIcon';
 
 const MainProducts = () => {
 
-    const demoArray = [1,2,3,4,5,6]
+    const demoArray = [1,2,3,4]
 
   return (
     <>
-        <div className="container px-4 py-5 ht-100-real">
+        <div className="container px-4 py-5">
             <h2 className='pb-2 border-bottom'>Featured Products</h2>
-            <div className="row row-cols-1 row-cols-lg-3 align-items-stretch g-4  py-5">
+            <div className="row row-cols-1 row-cols-lg-2 align-items-stretch g-4  py-5">
                 {demoArray.map((item) => (
                     <div className="col">
                         <div className="card h-100">
