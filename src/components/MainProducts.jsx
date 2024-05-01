@@ -1,25 +1,26 @@
 import React from 'react'
 import ShoppingCartIcon from '@heroicons/react/24/solid/ShoppingCartIcon';
 
-const MainProducts = () => {
+const MainProducts = ({ products,onAddToCart }) => {
 
-    const demoArray = [1,2,3,4]
+    const sliceProducts = products.slice(0,4)
 
   return (
     <>
         <div className="container px-4 py-5">
             <h2 className='pb-2 border-bottom'>Featured Products</h2>
             <div className="row row-cols-1 row-cols-lg-2 align-items-stretch g-4  py-5">
-                {demoArray.map((item) => (
+                {sliceProducts.map((item) => (
                     <div className="col">
                         <div className="card h-100">
-                            <img src="https://placehold.co/600x400" alt="" />
+                            <img src={item.image.url} height={350} alt="" />
                             <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                                <h5 className="card-title">{item.name}</h5>
+                                <p className="card-text">{item.seo.description.slice(0,160)}...</p>
+                                {/* {item.description} */}
                             </div>
                             <div className="card-footer d-flex justify-content-between container w-100" >
-                                <button className="btn btn-secondary">Add to Cart</button>
+                                <button className="btn btn-secondary" onClick={() => onAddToCart(item.id, 1)}>Add to Cart</button>
                                 <ShoppingCartIcon style={{ width: "25px" }}/>
                             </div>
                         </div>
