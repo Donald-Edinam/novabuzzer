@@ -26,7 +26,7 @@ const Navbar = ({ cart }) => {
                 {/* <li className="nav-link"><a href=""></a></li> */}
                 <li className="nav-link"><a className='nav-link' href="">Shop</a></li>
                 <li className="nav-link"><a className='nav-link' href="">Contact Us</a></li>
-                <li className="nav-link"><a className='nav-link' href="">
+                <li className="nav-link"><a className='nav-link' href="/shopping-cart">
                   <DynamicCartIcon cart={cart}/>
                 </a>
                 </li>
