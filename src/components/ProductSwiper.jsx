@@ -5,7 +5,7 @@ import ShoppingCartIcon from "@heroicons/react/24/solid/ShoppingCartIcon";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function ProductSwiper() {
+function ProductSwiper({ products, cart }) {
   var settings = {
     dots: true,
     infinite: false,
@@ -53,13 +53,16 @@ function ProductSwiper() {
     <div className="container">
       <div className="slider-container">
         <Slider {...settings}>
-          {demoArray.map((item) => (
+          {products.map((product) => (
             <div className="col">
               <div className="card mx-2 h-100">
-                <img src="https://placehold.co/600x400" alt="" />
+                <img src={product.image.url} alt=""style={
+                  {height: "200px"}
+                
+                } className="img-fluid"/>
                 <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                  <h5 className="card-title">{product.name.slice(0,48)}...</h5>
+                  <p className="card-text">{product.seo.description.slice(0, 100)}...</p>
                 </div>
                 <div className="card-footer d-flex justify-content-between container w-100" >
                   <button className="btn btn-secondary">Add to Cart</button>

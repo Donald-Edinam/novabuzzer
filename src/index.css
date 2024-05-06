@@ -18,3 +18,27 @@
     width: 33.3333%; 
     margin-left: 0px;
 }
+
+/* styles.css */
+
+.site-name {
+    opacity: 0;
+    animation: fadeInRight 1.5s ease-out forwards; /* Animation name, duration, easing, and forwards fill mode */
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-5%);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(5%);
+    }
+  }
+  

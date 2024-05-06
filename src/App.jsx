@@ -1,73 +1,47 @@
-import React, {useState, useEffect} from 'react'
-import Navigation from './navigation/Navigation'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-
-// Commerce.js instance
-import commerce from '../lib/commerce'
-
+import React, { useState, useEffect } from 'react';
+import Navigation from './navigation/Navigation';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import commerce from '../lib/commerce';
 
 const App = () => {
-
   const [products, setProducts] = useState([]);
-const [cart, setCart] = useState({})
- 
-// Handle the fetching of products from commerce.js
-const fetchProducts = async () => {
-  try {
-    const { data } = await commerce.products.list();
-    setProducts(data)
-  } catch (error) {
-    console.error("Error fetching products:", error);
-  }
-};
+  const [cart, setCart] = useState({});
+  const [loading, setLoading] = useState(true);
 
-// Retrieve cart items
-const fetchCart = async () => {
-  try {
-    const cartResponse = await  commerce.cart.retrieve();
-    setCart(cartResponse)
-    
-  } catch (error) {
-    console.error("Error fetching cart", error)
-  }
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const productResponse = await commerce.products.list();
+        const cartResponse = await commerce.cart.retrieve();
+        setProducts(productResponse.data);
+        setCart(cartResponse);
+        setLoading(false); // Set loading to false after both products and cart data are fetched
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-// Handle cart functionality
-const handleAddToCart = async (productId, quantity) => {
-  const addToCart = await commerce.cart.add(productId, quantity);
-  setCart(addToCart.cart)
-}
+    fetchData();
+  }, []);
 
-
-// useEffect(() => {
-//   let counter = 0;
-
-//   const fetchProductsMultipleTimes = async () => {
-//     while (counter < 5) {
-//       await fetchProducts();
-//       counter++;
-//     }
-//   };
-
-//   fetchProductsMultipleTimes();
-// }, []);
-
-useEffect(() =>{
-  fetchProducts();
-  fetchCart();
-}, [])
-
-console.log("Cart object", cart)
-console.log("Products", products)
-
-
+  // Handle adding products to cart
+  const handleAddToCart = async (productId, quantity) => {
+    const addToCartResponse = await commerce.cart.add(productId, quantity);
+    setCart(addToCartResponse.cart);
+  };
 
   return (
-    <>
-      <Navigation products={products} cart={cart} onAddToCart={handleAddToCart}/>
-    </>
-  )
-}
+    <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      {loading ? (
+        <div>
+           <h1 className="site-name">NovaBuzzer</h1>
+        </div>
+      ) : (
+        <Navigation products={products} cart={cart} onAddToCart={handleAddToCart} />
+      )}
+    </div>
+  );
+};
 
-export default App
+export default App;

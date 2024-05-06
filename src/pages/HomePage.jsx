@@ -5,7 +5,7 @@ import MainProducts from '../components/MainProducts'
 import ProductSwiper from '../components/ProductSwiper'
 import HomeFooter from '../components/HomeFooter'
 
-const HomePage = ({ products, cart }) => {
+const HomePage = ({ products, cart, onAddToCart }) => {
 // State for managing Products and Carts
 
   return (
@@ -13,10 +13,10 @@ const HomePage = ({ products, cart }) => {
       <div className="w-100">
         <Navbar cart={cart}/>
         <Hero />
-        <MainProducts products={products}/>
-        <ProductSwiper />
+        <MainProducts products={products} onAddToCart={onAddToCart}/>
+        <ProductSwiper products={products}/>
         <div className="b-example-divider"></div>
-        <HomeFooter />
+        <HomeFooter products={products} cart={cart}/>
       </div>
     </>
   )

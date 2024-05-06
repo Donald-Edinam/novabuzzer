@@ -9,7 +9,7 @@ const Navigation = ({ products, cart, onAddToCart }) => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index path="/" element={<HomePage products={products} cart={cart}/>} />
+                <Route index path="/" element={<HomePage products={products} cart={cart} onAddToCart={onAddToCart}/>} />
                 <Route path='/product/:id' element={<ProductDetails products={products}/>} />
                 <Route path='/shopping-cart' element={<CartContainer cart={cart}/> } />
                 {/* <Route path="product/:id" element={<Product products={products} cart={cart}/>} /> */}
