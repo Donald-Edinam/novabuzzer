@@ -51,6 +51,7 @@ function ProductSwiper({ products, cart }) {
 
   return (
     <div className="container">
+      <h1 className="pb-2 border-bottom">Hot and New</h1>
       <div className="slider-container">
         <Slider {...settings}>
           {products.map((product) => (

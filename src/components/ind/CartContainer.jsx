@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../Navbar';
 
-const CartContainer = ({ cart }) => {
+const CartContainer = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}) => {
     const isEmpty = !cart.total_items;
     const cartItems = cart.line_items;
 
@@ -28,9 +28,11 @@ const CartContainer = ({ cart }) => {
                                     />
                                     <div>
                                         <h5 className="card-title mb-0">{item.name}</h5>
-                                        <p className="card-text mb-0">
-                                            Quantity:{' '}
-                                            <input
+                                        <div className="card-text mb-0 d-flex">
+                                            <div className="d-flex w-25 justify-content-between mx-2 my-1">
+                                            <p className='m-2'>{`Quantity: `}</p>
+                                                <p className='p-1'>-</p>
+                                                <input
                                                 type="number"
                                                 min="1"
                                                 value={item.quantity}
@@ -38,9 +40,11 @@ const CartContainer = ({ cart }) => {
                                                     handleQuantityChange(item.id, e.target.value)
                                                 }
                                                 className="form-control d-inline-block"
-                                                style={{ width: '60px' }}
+                                                style={{ width: '50px', height: '40px' }}
                                             />
-                                        </p>
+                                            <p className='p-1'>+</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div>
@@ -53,16 +57,23 @@ const CartContainer = ({ cart }) => {
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-8 col-lg-6">
-                            <div className="card">
+                            <div className="d-flex row">
+                                <div className="col-md-12">
                                 <div className="card-body">
                                     <h5 className="card-title">Cart Summary</h5>
                                     <p className="card-text mb-3">
                                         Total:{' '}
                                         <strong>{cart.subtotal.formatted_with_symbol}</strong>
                                     </p>
+                                    <div className="d-flex justify-content-between">
                                     <button className="btn btn-primary btn-block">
-                                        Proceed to Checkout
+                                        Checkout
                                     </button>
+                                    <button className="btn btn-danger btn-block" onClick={handleEmptyCart}>
+                                        Clear Cart
+                                    </button>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
