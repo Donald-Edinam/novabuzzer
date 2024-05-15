@@ -55,7 +55,7 @@ function ProductSwiper({ products, cart }) {
       <div className="slider-container">
         <Slider {...settings}>
           {products.map((product) => (
-            <div className="col">
+            <div className="col" key={product.id}>
               <div className="card mx-2 h-100">
                 <img src={product.image.url} alt=""style={
                   {height: "200px"}
