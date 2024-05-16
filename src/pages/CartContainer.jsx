@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 const CartContainer = ({ cart, handleEmptyCart, handleUpdateCartQty, handleRemoveFromCart }) => {
 
+  const CHECKOUT_URL = cart.hosted_checkout_url
+
 
   const EmptyCart = () => {
     return <h2 className='text-center my-5 mx-auto'>Your Cart is Empty <Link to={"/"}>Explore the Shop</Link> </h2>;
@@ -17,7 +19,7 @@ const CartContainer = ({ cart, handleEmptyCart, handleUpdateCartQty, handleRemov
     return <EmptyCart />
   }
 
-  console.log("Cart total items", totalItems);
+
   const isCartEmpty = !cart.total_items;
 
 
@@ -78,7 +80,9 @@ const CartContainer = ({ cart, handleEmptyCart, handleUpdateCartQty, handleRemov
                     </p>
                     <div className="d-flex justify-content-between">
                       <button className="btn btn-primary btn-block">
-                        Checkout
+                          <Link to={CHECKOUT_URL} className='text-white'>
+                            Checkout
+                          </Link>
                       </button>
                       <button className="btn btn-danger btn-block" onClick={() => handleEmptyCart()}>
                         Clear Cart
