@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CartContainer = ({ cart, handleEmptyCart, handleUpdateCartQty, handleRemoveFromCart }) => {
 
-  const CHECKOUT_URL = cart.hosted_checkout_url
+  const CHECKOUT_URL = cart?.hosted_checkout_url ?? 'default_url';
 
 
   const EmptyCart = () => {

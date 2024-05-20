@@ -1,0 +1,28 @@
+/* styles.css */
+
+@keyframes button-click {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .btn-click-animation {
+    animation: button-click 0.3s ease;
+  }
+  
+  #button {
+    background-color: red;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px;
+  } 
