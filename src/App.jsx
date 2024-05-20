@@ -5,10 +5,15 @@ import './index.css'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 
+// Loading screen
+import Loader from '../src/assets/loader.gif'
+
 // Commmerce instance
 import commerce from './lib/commerce'
 
 const App = () => {
+
+
 
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
@@ -74,9 +79,11 @@ const App = () => {
 
   const LoadingContainer = () => {
     return (
-      <div className="mx-auto">
-        <h1 className='text-center m-5 p-5 g-5'>NovaBuzzer</h1>
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+        <img src={Loader} style={{ width: "220px" }} alt="Loading..." className="mx-auto my-5 py-5 d-block" />
       </div>
+
+
     )
   }
 
