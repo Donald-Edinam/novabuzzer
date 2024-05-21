@@ -15,7 +15,7 @@ const HeroSection = () => {
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Your Ghanaian Products At Your FingerTips</h1>
         <p class="lead">Start Exploring the diverse range of items you need to expose Ghana to the diaspora.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">
+          <button type="button" class="btn btn-dark btn-lg px-4 me-md-2">
             <a href="#lists" className='text-decoration-none text-white'>Shop Now</a>
           </button>
           {/* <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> */}

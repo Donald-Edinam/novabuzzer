@@ -1,42 +1,53 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import '../components/style.css' // Import the CSS file
 
-const ProductDetails = ({ products, cart }) => {
-
-    const arrayDummy = [1,2,3,4]
-
+const ProductDetails = ({ products, onAddToCart }) => {
     const { id } = useParams();
-    const product = products.find(product => product.id ===id)
+    const product = products.find(product => product.id === id);
 
-    if(!product) return <h1>Product not found</h1>
+    const [animateButton, setAnimateButton] = useState(false);
 
-  return (
-    <>
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src={product.image.url} alt="..." /></div>
-                    <div class="col-md-6">
-                        <div class="small mb-1">SKU: {product.sku}</div>
-                        <h1 class="display-5 fw-bolder">{product.name}</h1>
-                        <div class="fs-5 mb-5">
-                            {/* <span class="text-decoration-line-through">$45.00</span> */}
-                            <span>{product.price.formatted_with_symbol}</span>
+    const handleAddToCart = () => {
+        setAnimateButton(true);
+        onAddToCart(product.id, 1);
+        setTimeout(() => {
+            setAnimateButton(false);
+        }, 300); // Duration of the animation
+    };
+
+    if (!product) return <h1>Product not found</h1>;
+
+    return (
+        <>
+            <section className="py-5">
+                <div className="container px-4 px-lg-5 my-5">
+                    <div className="row gx-4 gx-lg-5 align-items-center">
+                        <div className="col-md-6">
+                            <img className="card-img-top mb-5 mb-md-0" src={product.image.url} alt="..." />
                         </div>
-                        <p class="lead">{product.seo.description}</p>
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style={{ maxWidth: "3rem" }} />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
+                        <div className="col-md-6">
+                            <div className="small mb-1">SKU: {product.sku}</div>
+                            <h1 className="display-5 fw-bolder">{product.name}</h1>
+                            <div className="fs-5 mb-5">
+                                <span>{product.price.formatted_with_symbol}</span>
+                            </div>
+                            <p className="lead">{product.seo.description}</p>
+                            <div className="d-flex">
+                                <input className="form-control text-center me-3" id="inputQuantity" type="num" value="1" style={{ maxWidth: "3rem" }} readOnly />
+                                <button 
+                                    onClick={handleAddToCart} 
+                                    className={`btn btn-outline-dark flex-shrink-0 ${animateButton ? 'btn-click-animation' : ''}`} 
+                                    type="button">
+                                    Add to cart
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </>
-  )
-}
+            </section>
+        </>
+    );
+};
 
-export default ProductDetails
+export default ProductDetails;

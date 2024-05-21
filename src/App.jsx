@@ -14,7 +14,7 @@ import commerce from './lib/commerce'
 const App = () => {
 
 
-
+// Managing the state of the products and cart
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [loading, setLoading] = useState(true);

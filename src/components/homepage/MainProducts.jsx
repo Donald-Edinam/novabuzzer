@@ -32,7 +32,7 @@ const MainProducts = ({ products, onAddToCart }) => {
                                 </Link>
                                 <div className="card-footer d-flex justify-content-between align-items-center my-2 container w-100">
                                     <button
-                                        className={`btn btn-primary${animateButtons[product.id] ? 'btn-click-animation' : ''}`}
+                                        className={`btn btn-dark${animateButtons[product.id] ? 'btn-click-animation' : ''}`}
                                         onClick={() => handleAddToCart(product.id)}
                                     >
                                         Add to Cart
