@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../components/style.css' // Import the CSS file
+import NavBar from '../components/homepage/NavBar'
 
-const ProductDetails = ({ products, onAddToCart }) => {
+const ProductDetails = ({ products, onAddToCart, cart }) => {
     const { id } = useParams();
     const product = products.find(product => product.id === id);
 
@@ -21,6 +22,7 @@ const ProductDetails = ({ products, onAddToCart }) => {
     return (
         <>
             <section className="py-5">
+                <NavBar cart={cart}/>
                 <div className="container px-4 px-lg-5 my-5">
                     <div className="row gx-4 gx-lg-5 align-items-center">
                         <div className="col-md-6">
